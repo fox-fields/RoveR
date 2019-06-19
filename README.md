@@ -8,7 +8,7 @@ This is my entry in the [/r/roguelikedev](https://www.reddit.com/r/roguelikedev/
 
 Controls: WASD keys to move
 
-<i> Not working?</i> The Rover app is being hosted for free. If the application is active for more than 25 hours, it will be unavaliable to users. 
+<i> Not working?</i> The RoveR app is being hosted for free. If the application is active for more than 25 hours, it will be unavaliable to users. 
 
 ### Mission Progress: 
 
