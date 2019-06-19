@@ -25,7 +25,7 @@
 # death = death function (not implemented)
 
 create_entity <- function(self, x, y, char, color, blocks, move, attack,
-                          fighter, action_one, action_two, action_three, ai,
+                          fighter, ai,
                           death, objs) {
   obj_buffer <- reactiveValues(
     self = self,

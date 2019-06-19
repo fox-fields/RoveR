@@ -7,7 +7,7 @@
 # General functions that control keyboard input.
 #
 # Contents:
-# [+] Movement Keys: movement_keys(key, gstates, obsta, objs)
+# [+] Movement Keys: movement_keys(key, objs)
 
 #### [+] Movement Keys #########################################################
 # Keys that handle player movement.
