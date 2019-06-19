@@ -1,6 +1,6 @@
 # RoveR
 
-#### Your battery is low and it’s getting dark
+#### <i> Your battery is low and it’s getting dark </i>
 
 RoveR is a roguelike about a planetary rover created using R and the package Shiny. 
 
