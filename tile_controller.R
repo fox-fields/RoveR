@@ -1,7 +1,7 @@
 #### Tile Controller ###########################################################
 # RoveR
 # Tile Manager Functions ("tile_controller.R")
-# July 2019
+# June 2019
 # FoxFields
 #
 # General functions that control the plotting of tiles

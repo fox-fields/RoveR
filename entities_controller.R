@@ -1,7 +1,7 @@
 #### Entities Controller #######################################################
 # RoveR
 # Movement Functions ("entities_controller.R")
-# May 2019
+# June 2019
 # FoxFields
 #
 # General functions that control movement of entities
