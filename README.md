@@ -1,7 +1,20 @@
 # RoveR
 
-#### <i> Your battery is low and it’s getting dark </i>
+### <i> Your battery is low and it’s getting dark </i>
 
-RoveR is a roguelike about a planetary rover created using R and the package Shiny. 
+RoveR is a roguelike about a planetary rover created using [R](https://en.wikipedia.org/wiki/R_(programming_language)) and the package [Shiny](https://shiny.rstudio.com/). 
 
-This is my entry in the /r/roguelikedev 2019 summer tutorial. I am not a developer, and this is entirely a hobby project. I’m not aware of any games made with R (perhaps for a good reason)! Let's see if it is possible. 
+This is my entry in the [/r/roguelikedev](https://www.reddit.com/r/roguelikedev/) 2019 summer tutorial. I am not a developer, and this is entirely a hobby project. I’m not aware of any games made with R (perhaps for a good reason)! Let's see if it's possible. You can play my most recent deployment [here] (https://foxfields.shinyapps.io/rover/). 
+
+Controls: 
+- WASD keys to move
+
+<i> Not working?</i> The Rover app is being hosted for free. If the application is active for more than 25 hours, it will be unavaliable to users. 
+
+### Mission Progress: 
+
+#### Week 1: "Lunokhod 1"
+
+Huzzah! By using R along with the package Shiny, I was able to create the basic environment and move the player rover "@" around the screen. 
+
+![Lunokhod 1](/preview/lunokhod_1.gif)
