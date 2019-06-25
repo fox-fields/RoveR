@@ -14,7 +14,7 @@ Controls: WASD keys to move
 
 #### Week 2: "Apollo Lunar Rover"
 
-This week's mission brings tile collision, non-player entities and a temporary 'dungeon' for exploring. Level generation is simple, with a central hall and rooms. Performance is great when run locally, but relatively slow when the shiny app is hosted.
+This week's mission objectives included tile collision, non-player entities and a temporary 'dungeon' for exploring. Level generation is simple, with a central hall and rooms. Performance is great when run locally, but relatively slow when the shiny app is hosted.
 
 ![Apollo Lunear Rover](/preview/apollo_lunar_rover.gif)
 
