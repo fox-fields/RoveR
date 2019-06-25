@@ -1,36 +1,82 @@
 #### Tile Controller ###########################################################
 # RoveR
 # Tile Manager Functions ("tile_controller.R")
-# June 2019
+# June 2019 (RoveR version 2: "Apollo Lunar Rover")
 # FoxFields
 #
 # General functions that control the plotting of tiles
 
 # Contents:
-# [+] Plot Entities: plot_entities(plot_buffer, font_size=1, align='center', objs)
-# [+] Plot Grid: plot_grid(plot_buffer)
+# [+] Collate Tiles: collate_tiles(archit, objs)
+# [+] Plot Tiles: plot_tiles(plot_buffer, archit, objs)
+# [+] Plot Grid: plot_grid(plot_buffer, objs)
+
+#### [+] Collate Tiles #########################################################
+# Collate all architectue into tiles for plotting on the main screen.
+#
+# + archit = architecture lists (reactive list)
+# + objs = objects list (reactive list)
+# = returns a dataframe for tile ploting (dataframe)
+
+collate_tiles <- function (archit, objs){
+    
+  buffer_cells <- data.frame(
+    x = archit[['cells']]$x,
+    y = archit[['cells']]$y,
+    text = "▣",
+    color = "#FDE725",
+    size = 1.5
+  )
+  
+  buffer_objs <- data.frame(
+    x = sapply(objs, "[[", "x"),
+    y = sapply(objs, "[[", "y"),
+    text = sapply(objs, "[[", "char"),
+    color = sapply(objs, "[[", "color"),
+    size = 1.0
+  )
+  
+  return(rbind(buffer_cells,buffer_objs))
+  
+}
 
 
-#### [+] Plot Entities #########################################################
-# Plot all entities on the main screen.
+#### [+] Plot Tiles #########################################################
+# Plot all tiles on the main screen.
 #
 # + plot_buffer = the plot object (plot_ly plot)
-# + font_size = font size modifies (proportion - numeric)
-# + align = text alignment (string)
+# + archit = architecture lists (reactive list)
 # + objs = objects list (reactive list)
 # = returns an updated plot object (plot_ly plot)
 
-plot_entities <- function(plot_buffer, font_size = 1, align = 'center', objs) {
+plot_tiles <- function(plot_buffer, archit, objs) {
+    tiles <- collate_tiles(archit, objs)
     add_trace(
       name = "Entities",
       plot_buffer,
-      x = sapply(objs, "[[", "x"),
-      y = sapply(objs, "[[", "y") + 0.075,
+      x = tiles$x[tiles$x <= 8+objs[['player']]$x &
+                  tiles$x >= objs[['player']]$x-8 &
+                  tiles$y <= 5+objs[['player']]$y &
+                  tiles$y >= objs[['player']]$y-5] ,
+      y = tiles$y[tiles$x <= 8+objs[['player']]$x &
+                    tiles$x >= objs[['player']]$x-8 &
+                    tiles$y <= 5+objs[['player']]$y &
+                    tiles$y >= objs[['player']]$y-5] + 0.075,
       type = 'scatter',
       mode = 'text',
-      text = sapply(objs, "[[", "char"),
-      textposition = align,
-      textfont = list(color = sapply(objs, "[[", "color"), size = font_size*80)
+      text = tiles$text[tiles$x <= 8+objs[['player']]$x &
+                          tiles$x >= objs[['player']]$x-8 &
+                          tiles$y <= 5+objs[['player']]$y &
+                          tiles$y >= objs[['player']]$y-5],
+      textposition = "center",
+      textfont = list(color = tiles$color[tiles$x <= 8+objs[['player']]$x &
+                                          tiles$x >= objs[['player']]$x-8 &
+                                          tiles$y <= 5+objs[['player']]$y &
+                                          tiles$y >= objs[['player']]$y-5],
+                      size = tiles$size[tiles$x <= 8+objs[['player']]$x &
+                                           tiles$x >= objs[['player']]$x-8 &
+                                           tiles$y <= 5+objs[['player']]$y &
+                                           tiles$y >= objs[['player']]$y-5] * 70)
     )
 }
 
@@ -40,12 +86,13 @@ plot_entities <- function(plot_buffer, font_size = 1, align = 'center', objs) {
 # + plot_buffer = the plot object (plot_ly plot)
 # = returns an updated plot object (plot_ly plot)
 
-plot_grid <- function (plot_buffer){
+plot_grid <- function (plot_buffer, objs){
   layout(
     plot_buffer,
     showlegend= FALSE,
+    dragmode=FALSE,
     xaxis = list(
-      range = c(-10,10),
+      range = c(objs[['player']]$x-5,objs[['player']]$x+5),
       dtick = 1,
       tick0 = 0.5,
       zeroline = FALSE,
@@ -55,7 +102,7 @@ plot_grid <- function (plot_buffer){
       gridwidth = 2
     ),
     yaxis = list(
-      range = c(-10,10),
+      range = c(objs[['player']]$y-5,objs[['player']]$y+5),
       dtick = 1,
       tick0 = 0.65,
       scaleanchor = "x",
@@ -66,7 +113,8 @@ plot_grid <- function (plot_buffer){
       showticklabels = FALSE
     ),
     paper_bgcolor = "#353535",
-    plot_bgcolor = "#20A486FF"
+    plot_bgcolor = "#313131" # 31
   )
 }
+
 
