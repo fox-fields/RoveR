@@ -6,7 +6,7 @@ RoveR is a roguelike about a planetary rover created using [R](https://en.wikipe
 
 This is my entry in the [/r/roguelikedev](https://www.reddit.com/r/roguelikedev/) 2019 summer tutorial. I am not a developer, and this is entirely a hobby project. I’m not aware of any games made with R (perhaps for a good reason)! Let's see if it's possible. You can play my most recent deployment [here](https://foxfields.shinyapps.io/rover/). Press any key to start. Be patient, the demo requires up to 10 seconds to load when hosted. It's almost instant locally, I swear!
 
-Controls: WASD keys to move
+Controls: Any key to start; WASD keys to move
 
 <i> Not working?</i> The RoveR app is being hosted for free. If the application is active for more than 25 hours, it will be unavaliable to users. 
 
