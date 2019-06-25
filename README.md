@@ -16,11 +16,11 @@ Controls: WASD keys to move
 
 This week's mission brings tile collision, non-player entities and a temporary 'dungeon' for exploring. Level generation is simple, with a central hall and rooms. Performance is great when run locally, but relatively slow when the shiny app is hosted.
 
-![Apollo Lunear Rover](/preview/apollo_lunar_rover.gif)
-![Apollo Lunear Rover](/preview/apollo_lunar_rover.png)
+![Apollo Lunear Rover](/preview/apollo_lunar_rover.gif =250x)
+![Apollo Lunear Rover](/preview/apollo_lunar_rover.png =250x)
 
 #### Week 1: "Lunokhod 1"
 
 Huzzah! By using R along with the package Shiny, I was able to create the basic environment and move the player rover "@" around the screen. 
 
-![Lunokhod 1](/preview/lunokhod_1.gif)
+![Lunokhod 1](/preview/lunokhod_1.gif =250x)
