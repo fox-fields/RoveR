@@ -16,8 +16,8 @@ Controls: WASD keys to move
 
 This week's mission brings tile collision, non-player entities and a temporary 'dungeon' for exploring. Performance is great when run locally, but relatively slow when the shiny app is hosted.
 
-![Apollo Lunear Rover](/preview/apollo_lunear_rover.gif)
-![Apollo Lunear Rover](/preview/apollo_lunear_rover.png)
+![Apollo Lunear Rover](/preview/apollo_lunar_rover.gif)
+![Apollo Lunear Rover](/preview/apollo_lunar_rover.png)
 
 #### Week 1: "Lunokhod 1"
 
