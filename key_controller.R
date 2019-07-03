@@ -1,16 +1,16 @@
 #### Key Controller ##############################################################
 # RoveR
 # Key Manager Functions ("key_controller.R")
-# June 2019 (RoveR version 2: "Apollo Lunar Rover")
+# July 2019 (RoveR version 0.3: "Lunokhod 2")
 # FoxFields
 #
-# General functions that control keyboard input.
+# Functions that control keyboard input.
 # Contents:
 # [+] Movement Keys: movement_keys(key, archit, objs)
 
 #### [+] Movement Keys #########################################################
 # Keys that handle player movement.
-
+#
 # + key = keyboard input (key)
 # + archit = architecture list (reactive list)
 # + objs = object list (reactive list)

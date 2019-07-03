@@ -1,1 +1,1 @@
-﻿self,x,y,char,color,blocks,move,attack,fighter,ai,deathplayer,1,1,@,#35608D,TRUE,move_entity,NULL,NULL,NULL,NULLenemy,8,8,g,#22A884,TRUE,move_entity,NULL,NULL,NULL,NULL
+﻿self,x,y,char,color,blocks,move,attack,fighter,ai,death,sizeplayer,75,75,@,white,TRUE,move_entity,NULL,NULL,NULL,NULL,1.2enemy,8,8,g,#22A884,TRUE,move_entity,NULL,NULL,NULL,NULL,1.2

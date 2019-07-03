@@ -1,10 +1,10 @@
 #### Tile Controller ###########################################################
 # RoveR
 # Tile Manager Functions ("tile_controller.R")
-# June 2019 (RoveR version 2: "Apollo Lunar Rover")
+# July 2019 (RoveR version 0.3: "Lunokhod 2")
 # FoxFields
 #
-# General functions that control the plotting of tiles
+# Functions that control the plotting of tiles
 
 # Contents:
 # [+] Collate Tiles: collate_tiles(archit, objs)
@@ -19,29 +19,28 @@
 # = returns a dataframe for tile ploting (dataframe)
 
 collate_tiles <- function (archit, objs){
-    
+  
   buffer_cells <- data.frame(
     x = archit[['cells']]$x,
     y = archit[['cells']]$y,
-    text = "▣",
-    color = "#FDE725",
-    size = 1.5
+    char = archit[['cells']]$char,
+    color = archit[['cells']]$color,
+    size = archit[['cells']]$size
   )
   
   buffer_objs <- data.frame(
     x = sapply(objs, "[[", "x"),
     y = sapply(objs, "[[", "y"),
-    text = sapply(objs, "[[", "char"),
+    char = sapply(objs, "[[", "char"),
     color = sapply(objs, "[[", "color"),
-    size = 1.0
+    size = sapply(objs, "[[", "size")
   )
   
-  return(rbind(buffer_cells,buffer_objs))
+  return(rbind(buffer_cells, buffer_objs, stringsAsFactors = FALSE))
   
 }
 
-
-#### [+] Plot Tiles #########################################################
+#### [+] Plot Tiles ############################################################
 # Plot all tiles on the main screen.
 #
 # + plot_buffer = the plot object (plot_ly plot)
@@ -50,33 +49,39 @@ collate_tiles <- function (archit, objs){
 # = returns an updated plot object (plot_ly plot)
 
 plot_tiles <- function(plot_buffer, archit, objs) {
+  
     tiles <- collate_tiles(archit, objs)
+    
+    tiles$char[which(tiles$x == objs[['player']]$x &
+                       tiles$y == objs[['player']]$y)] <- "@"
+    tiles$size[which(tiles$x == objs[['player']]$x &
+                       tiles$y == objs[['player']]$y)] <- 1.2
     add_trace(
       name = "Entities",
       plot_buffer,
       x = tiles$x[tiles$x <= 8+objs[['player']]$x &
                   tiles$x >= objs[['player']]$x-8 &
                   tiles$y <= 5+objs[['player']]$y &
-                  tiles$y >= objs[['player']]$y-5] ,
+                  tiles$y >= objs[['player']]$y-5],
       y = tiles$y[tiles$x <= 8+objs[['player']]$x &
                     tiles$x >= objs[['player']]$x-8 &
                     tiles$y <= 5+objs[['player']]$y &
-                    tiles$y >= objs[['player']]$y-5] + 0.075,
+                    tiles$y >= objs[['player']]$y-5],
       type = 'scatter',
       mode = 'text',
-      text = tiles$text[tiles$x <= 8+objs[['player']]$x &
-                          tiles$x >= objs[['player']]$x-8 &
-                          tiles$y <= 5+objs[['player']]$y &
-                          tiles$y >= objs[['player']]$y-5],
+      text = tiles$char[tiles$x <= 8+objs[['player']]$x &
+                            tiles$x >= objs[['player']]$x-8 &
+                            tiles$y <= 5+objs[['player']]$y &
+                            tiles$y >= objs[['player']]$y-5],
       textposition = "center",
       textfont = list(color = tiles$color[tiles$x <= 8+objs[['player']]$x &
+                                            tiles$x >= objs[['player']]$x-8 &
+                                            tiles$y <= 5+objs[['player']]$y &
+                                            tiles$y >= objs[['player']]$y-5],
+                      size = tiles$size[tiles$x <= 8+objs[['player']]$x &
                                           tiles$x >= objs[['player']]$x-8 &
                                           tiles$y <= 5+objs[['player']]$y &
-                                          tiles$y >= objs[['player']]$y-5],
-                      size = tiles$size[tiles$x <= 8+objs[['player']]$x &
-                                           tiles$x >= objs[['player']]$x-8 &
-                                           tiles$y <= 5+objs[['player']]$y &
-                                           tiles$y >= objs[['player']]$y-5] * 70)
+                                          tiles$y >= objs[['player']]$y-5] * 70)
     )
 }
 
@@ -113,7 +118,7 @@ plot_grid <- function (plot_buffer, objs){
       showticklabels = FALSE
     ),
     paper_bgcolor = "#353535",
-    plot_bgcolor = "#313131" # 31
+    plot_bgcolor = "#313131"
   )
 }
 
