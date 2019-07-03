@@ -1,1 +1,1 @@
-![screenshot](preview/lunokohd_2_map.png)
+![screenshot](lunokohd_2_map.png)
