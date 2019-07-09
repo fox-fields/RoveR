@@ -1,7 +1,7 @@
 #### Planet Generator ##########################################################
 # RoveR
 # Planet Generation Functions ("planet_generator.R") 
-# July 2019 (RoveR version 0.3: "Lunokhod 2")
+# July 2019 (RoveR version 0.4: "Prop-M")
 # FoxFields
 #
 # Funnctions that generate planets.

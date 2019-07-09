@@ -1,11 +1,10 @@
 #### Tile Controller ###########################################################
 # RoveR
 # Tile Manager Functions ("tile_controller.R")
-# July 2019 (RoveR version 0.3: "Lunokhod 2")
+# July 2019 (RoveR version 0.4: "Prop-M")
 # FoxFields
 #
 # Functions that control the plotting of tiles
-
 # Contents:
 # [+] Collate Tiles: collate_tiles(archit, objs)
 # [+] Plot Tiles: plot_tiles(plot_buffer, archit, objs)
@@ -21,6 +20,7 @@
 collate_tiles <- function (archit, objs){
   
   buffer_cells <- data.frame(
+    self = "",
     x = archit[['cells']]$x,
     y = archit[['cells']]$y,
     char = archit[['cells']]$char,
@@ -29,6 +29,7 @@ collate_tiles <- function (archit, objs){
   )
   
   buffer_objs <- data.frame(
+    self = sapply(objs, "[[", "self"),
     x = sapply(objs, "[[", "x"),
     y = sapply(objs, "[[", "y"),
     char = sapply(objs, "[[", "char"),
@@ -54,8 +55,10 @@ plot_tiles <- function(plot_buffer, archit, objs) {
     
     tiles$char[which(tiles$x == objs[['player']]$x &
                        tiles$y == objs[['player']]$y)] <- "@"
+    tiles$color[which(tiles$x == objs[['player']]$x &
+                       tiles$y == objs[['player']]$y)] <- "white"
     tiles$size[which(tiles$x == objs[['player']]$x &
-                       tiles$y == objs[['player']]$y)] <- 1.2
+                       tiles$y == objs[['player']]$y)] <- 1.0
     add_trace(
       name = "Entities",
       plot_buffer,
@@ -74,6 +77,10 @@ plot_tiles <- function(plot_buffer, archit, objs) {
                             tiles$y <= 5+objs[['player']]$y &
                             tiles$y >= objs[['player']]$y-5],
       textposition = "center",
+      hovertemplate = tiles$self[tiles$x <= 8+objs[['player']]$x &
+                                   tiles$x >= objs[['player']]$x-8 &
+                                   tiles$y <= 5+objs[['player']]$y &
+                                   tiles$y >= objs[['player']]$y-5],
       textfont = list(color = tiles$color[tiles$x <= 8+objs[['player']]$x &
                                             tiles$x >= objs[['player']]$x-8 &
                                             tiles$y <= 5+objs[['player']]$y &
