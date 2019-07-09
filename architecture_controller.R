@@ -1,16 +1,16 @@
 #### Architecture controller ###################################################
 # RoveR
 # Architecture Functions ("architecture_controller.R")
-# July 2019 (RoveR version 0.3: "Lunokhod 2")
+# July 2019 (RoveR version 0.4: "Prop-M")
 # FoxFields
 #
-# Functions that handle the game architecture.
+# Functions that handles the game architecture.
 # Contents:
 # [+] Create Entity: create_entity(self, x, y, char, color, blocks, sight, move, 
 #                               attack, fighter, ai, death, objs)
 # [+] Preload Entities: peload_entities(entities_file, objs)
 
-#### [+] Create Entity ###########################################################
+#### [+] Create Entity #########################################################
 # Creates an object as a reactive values list. 
 #  
 # + self = name of object (string)
@@ -27,32 +27,42 @@
 # + objs = object list (reactive list)
 # = returns; nothing. 
 
-create_entity <- function(self, x, y, char, color, blocks, move, attack,
-                          fighter, ai, death, objs, size) {
+create_entity <- function(self,
+                          x,
+                          y,
+                          char,
+                          color,
+                          blocks,
+                          move,
+                          attack,
+                          behaviour,
+                          integrity,
+                          energy,
+                          shield,
+                          power,
+                          data,
+                          death,
+                          objs,
+                          size) {
   obj_buffer <- reactiveValues(self = self,
-                                  x = x,
-                                  y = y,
-                                  char = char,
-                                  color = color,
-                                  blocks = blocks,
-                                  move = move,
-                                  attack = attack,
-                                  fighter = fighter,
-                                  ai = ai,
-                                  death = death,
-                                  size = size
+                               x = x,
+                               y = y,
+                               char = char,
+                               color = color,
+                               blocks = blocks,
+                               move = move,
+                               attack = attack,
+                               behaviour = behaviour,
+                               fighter = impose_combat(self = self,
+                                                       integrity = integrity,
+                                                       energy = energy,
+                                                       shield = shield,
+                                                       power = power,
+                                                       data = data),
+                                death = death,
+                                size = size
                               )
-
-  reactive(if (!is.null(obj_buffer[[self]][['fighter']])) {
-    obj_buffer[[self]][['fighter']]$self <- self
-  })
-
-  reactive(if (!is.null(obj_buffer[[self]]$ai)) {
-    obj_buffer[[self]][['ai']]$self <- self
-  })
-
   objs[[self]] <- obj_buffer
-  
 }
 
 #### [+] Preload Entities ######################################################
@@ -62,25 +72,32 @@ create_entity <- function(self, x, y, char, color, blocks, move, attack,
 # + objs = object list (reactive list)
 # = returns; nothing. 
 
-preload_entities<-function(entities_file, objs){
-  entities <- read.csv(entities_file, header = TRUE)
+preload_entities<-function(entities_file, objs, acceptabe_tiles){
+  entities <- read.csv(entities_file, header = TRUE,encoding="UTF-8")
+
   for (i in 1:length(entities$self)){
+    acceptable_tile <- sample_n(acceptabe_tiles,1)
     entities_buffer <- entities[i,]
     create_entity(
       self = as.character(entities_buffer$self),
-      x = as.numeric(entities_buffer$x),
-      y = as.numeric(entities_buffer$y),
+      #x = as.numeric(entities_buffer$x),
+      #y = as.numeric(entities_buffer$y),
+      x = acceptable_tile$x,
+      y = acceptable_tile$y,
       char = as.character(entities_buffer$char),
       color = as.character(entities_buffer$color),
       blocks = entities_buffer$blocks,
       move = get(as.character(entities_buffer$move)),
-      attack = entities_buffer$attack,
-      fighter = entities_buffer$fighter,
-      ai = entities_buffer$ai,
-      death = entities_buffer$death,
+      attack = get(as.character(entities_buffer$attack)),
+      behaviour = get(as.character(entities_buffer$behaviour)),
+      integrity = entities_buffer$integrity,
+      energy = entities_buffer$energy,
+      shield = entities_buffer$shield,
+      power = entities_buffer$power,
+      data = entities_buffer$data,
+      death = get(as.character(entities_buffer$death)),
       size = entities_buffer$size,
       objs=objs
     )
   }
 }
-

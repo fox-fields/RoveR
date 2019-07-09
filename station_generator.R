@@ -1,7 +1,7 @@
 #### Level Controller ###########################################################
 # RoveR
 # Tile Manager Functions ("tile_controller.R")
-# July 2019 (RoveR version 3: "Lunokhod 2")
+# July 2019 (RoveR version 0.4: "Prop-M")
 # FoxFields
 #
 # Generation of a (example) level.  

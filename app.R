@@ -1,31 +1,44 @@
 ##### RoveR Application ########################################################
 # RoveR 
 # Application ("app.R")
-# July 2019 (RoveR version 3: "Lunokhod 2")
+# July 2019 (RoveR version 0.4: "Prop-M")
 # FoxFields
 
-#### Source files ##############################################################
+#### Source Files ##############################################################
+
+# Controllers
 source("architecture_controller.R")
+source("behaviour_controller.R")
+source("combat_controller.R")
 source("key_controller.R")
-source("level_controller.R")
 source("movement_controller.R")
-source("planet_generator.R")
 source("tile_controller.R")
 source("turn_controller.R")
+
+# Generators
+source("planet_generator.R")
+source("station_generator.R")
+
+# User Interface 
+source("user_interface.R")
 
 #### Packages ##################################################################
 require(shinyWidgets)
 require(raster)
+require(gdistance)
 require(dplyr)
 require(shiny)
 require(plotly)
 require(compiler)
+require(igraph)
 enableJIT(3) 
 
 #### Shiny UI ##################################################################
   ui = fillPage(
     setBackgroundColor("#353535"),
-    plotlyOutput('plot', height = 900, width = 1400),
+    span(textOutput('stat_panel'),style="color:#35B779"),
+    span(htmlOutput('log'),style="color:white"),
+    plotlyOutput('plot', height = 800, width = 1400),
     tags$script(
       "
       var keyReg = {};
@@ -68,40 +81,62 @@ enableJIT(3)
 
 #### Shiny server ############################################################## 
 server = function(input, output, session) {
-
   #### Temporary loading screen
   showNotification(
     "⊐═══════⊏🆁🅾🆅🅴🆁⊐══════⊏
     ⋄⋄⋄⋄⋄⋄⋄⋄⋄⋄ⓕⓞⓧⓕⓘⓔⓛⓓⓢ⋄⋄⋄⋄⋄⋄⋄⋄⋄⋄
     ⋄⋄Your battery is low and it’s getting dark⋄⋄
-    ⋄⋄Refresh if you spawn inside an obstacle⋄⋄
+    ⋄⋄Performance is bad. Kill the enemies⋄⋄
     ⋄<Close window to start; WASD to move>⋄
     ⊐════════════⊏",
     duration = NA, closeButton = T,
   )
-
+  
 #### Initialization ############################################################
  
   objs <- reactiveValues()
-  archit <- reactiveValues(cells = list(), grid=list())
-  state <- reactiveValues(turn= list())
+  archit <- reactiveValues(cells = list(),
+                           grid = list(),
+                           log = list(log_text5 = "...", 
+                                      log_text4 = "...",
+                                      log_text3 = "...")
+                           )
+  state <- reactiveValues(turn = list())
   state[['turn']] <- 'player_turn'
-
+  
 #### Level loading #############################################################
 
-  #level_temp<-temp_level() # dungeon
-  #archit[["cells"]] <- data.frame(x=level_temp$x, y=level_temp$y)
-
-  archit[["cells"]]  <- planet_tilesetter(create_planet())
-  preload_entities('entities_example.csv',objs)
+  level_temp<-temp_level() # dungeon
+  archit[["cells"]] <- data.frame(x=level_temp$x, 
+                                  y=level_temp$y, 
+                                  char ="▣", 
+                                  color = "#FDE725",
+                                  size = 1.4,
+                                  blocks = TRUE)
+  
+  acceptable_tiles <- expand.grid(x=min(level_temp$x):max(level_temp$x), 
+                                  y=min(level_temp$y):max(level_temp$y))
+  acceptable_tiles <- setdiff(acceptable_tiles,level_temp)
+  
+  #archit[["cells"]]  <- planet_tilesetter(create_planet())
+  preload_entities('entities_example.csv',objs, acceptable_tiles )
 
 #### Plot screen ############################################################### 
-    output$plot = renderPlotly({
-      plot_buffer <- plot_ly() %>%  config(displayModeBar = F)
-      plot_buffer <- plot_tiles(plot_buffer, archit, objs)
-      plot_buffer <- plot_grid(plot_buffer, objs)
+   output$plot = renderPlotly({
+     plot_buffer <- plot_ly() %>%  config(displayModeBar = F)
+     plot_buffer <- plot_tiles(plot_buffer, archit, objs)
+     plot_buffer <- plot_grid(plot_buffer, objs)
   })
 
+#### User Interface ############################################################ 
+  output$stat_panel = renderText({
+    panel_stats(objs)
+  })
+  
+  output$log = renderUI({
+    HTML(panel_log(archit))
+  })
+  
 #### Game loop #################################################################
     observeEvent(input$key, {
       

@@ -1,1 +1,11 @@
-﻿self,x,y,char,color,blocks,move,attack,fighter,ai,death,sizeplayer,75,75,@,white,TRUE,move_entity,NULL,NULL,NULL,NULL,1.2enemy,8,8,g,#22A884,TRUE,move_entity,NULL,NULL,NULL,NULL,1.2
+self,x,y,char,color,blocks,move,attack,behaviour,integrity,energy,shield,power,data,death,size
+player,1,1,@,white,TRUE,move_entity,player_attack,passive_call,70,10,1,3,0,kill_entity,1.0
+MT-1,8,8,⦹,#75D054,TRUE,move_towards,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
+MT-2,8,9,⦹,#75D054,TRUE,move_towards,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
+PF-1,8,10,⦷,#3B528B,TRUE,pathfind,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
+MT-3,8,8,⦹,#75D054,TRUE,move_towards,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
+MT-4,8,9,⦹,#75D054,TRUE,move_towards,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
+MT-5,8,8,⦹,#75D054,TRUE,move_towards,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
+MT-6,8,9,⦹,#75D054,TRUE,move_towards,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
+PF-2,8,10,⦷,#3B528B,TRUE,pathfind,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
+PF-3,8,10,⦷,#3B528B,TRUE,pathfind,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
