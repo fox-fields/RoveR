@@ -12,6 +12,12 @@ Controls: Any key to start; WASD keys to move
 
 ### Mission Progress: 
 
+#### Week 4: "Prop-M"
+
+This week's progress brings a simple user interface and combat. I've avoided any polish on the UI. I don't know what I will need from the UI, so a basic text display seems reasonable for now. Melee combat is implemented and any players will find themselves within a small dungeon (or 'station'). There are two enemy types with slightly different behaviour to seek out and destory. Placing the mouse cursor over enemies now displays their names, but will eventually reveal statistics about each entitiy. Performance worsened considerable this week - I didn't have time to profile and optimize, but I think it will be necessary before next week's tutorial. 
+
+![Prop-M](/preview/prop-M.png)
+
 #### Week 3: "Lunokhod 2"
 
 This week's mission objectives included [planet generation](preview/lunokohd_2_map.png) and turn handling. I've decided to forego the field of view tutorial - I can implement later, if necessary - but my decision to have a small field of view might make any field of view mechanic redudant. Planet generation uses a modified random cluster method modified from [Saura and Martínez-Millán, 2000](https://link.springer.com/article/10.1023/A:1008107902848). This will be expanded later with environmental variables like thermal gradients across elevation and lattitude. Performance remains an issue when hosted online but is great locally. Profiling suggests the peformance bottleneck is mapping R objects to javascript (I think) with Plotly.js and not my R script per se. Because this only seems to be an issue with the hosted demo, I will save optimization until the end of the tutoial.
