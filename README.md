@@ -14,7 +14,7 @@ Controls: Any key to start; WASD keys to move
 
 #### Week 4: "Prop-M"
 
-This week's progress brings a simple user interface and combat. I've avoided any polish on the UI. I don't know what I will need from the UI, so a basic text display seems reasonable for now. Melee combat is implemented and any players will find themselves within a small dungeon (or 'station'). There are two enemy types with slightly different behaviour to seek out and destory. Placing the mouse cursor over enemies now displays their names, but will eventually reveal statistics about each entitiy. Performance worsened considerable this week - I didn't have time to profile and optimize, but I think it will be necessary before next week's tutorial. 
+This week's progress brings a simple user interface and combat. I've avoided any polish on the UI. I don't know what I will need from the UI, so a basic text display seems reasonable for now. Melee combat is implemented and any players will find themselves within a small dungeon (or 'station'). There are two enemy types with slightly different behaviour to seek out and destory. Placing the mouse cursor over enemies now displays their names, but will eventually reveal statistics about each entitiy. Performance worsened considerably this week - I didn't have time to profile and optimize, but I think it will be necessary before next week's tutorial. 
 
 ![Prop-M](/preview/prop-M.png)
 
