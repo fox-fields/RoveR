@@ -10,11 +10,11 @@ This is my entry in the [/r/roguelikedev](https://www.reddit.com/r/roguelikedev/
 
 #### Week 5: "Lunokhod 3"
 
-This week required I step back and spend some time restructing the game architecture, which greatly improved performance locally. Because of the limitations of R, I'll likely need to optomize again towards the end of the tutorials. In my defence, I've really only started to understand anything about R and [why it's a slow language](http://adv-r.had.co.nz/Performance.html). I don't think anyone has attempted to write any games in R, and while I'm not the person to do so correctly, I'm having a lot of fun learning about programming as I follow these tutorials. 
+It became necessary this week to step back and spend time restructing how entity data is stored and subset, which greatly improved performance locally. Because of the limitations of R, I'll likely need to optomize again towards the end of the tutorials. In my defence, I've really only started to understand anything about R and [why it's a slow language](http://adv-r.had.co.nz/Performance.html). It looks as if I may need to write some functions by connecting [C++ to R](http://adv-r.had.co.nz/Rcpp.html#rcpp). I don't think anyone has attempted to write any games in R, and while I'm not the person to do so correctly, I'm having a lot of fun learning about R (and programming generally) as I follow these tutorials. 
 
-In terms of progress, I've also brought hover text (i.e. a cursor-based 'look'), line-of-sight targeting, items, an inventory, and actions (i.e. abilities for equipment) to RoveR. I've also made walls into entities, and they can now be destoryed with some effort. I've set things up nicely for the next two tutorials (I think) and I'm excited to polish some of the features for next week.
+In terms of progress, I've brought hover text (i.e. a cursor-based 'look'), line-of-sight targeting, items, an inventory, and actions (i.e. abilities for equipment) to RoveR. I've also made walls into entities, and they can now be destoryed with some effort. I've set things up nicely for the next two tutorials (I think) and I'm excited to polish some of these features for next week.
 
-Although performance has now improved locally, it is still awful with the online hosted demo application - I've decided to forego posting the link to the demo for this week. 
+Although performance is now improved locally, it is still awful with the online hosted demo application - I've decided to forego posting the link to the demo for this week.
 
 ![Lunokhod 3](/preview/lunokhod_3.png)
 
