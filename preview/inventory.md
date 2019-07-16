@@ -1,0 +1,1 @@
+![screenshot](inventory.png)
