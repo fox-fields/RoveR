@@ -1,11 +1,71 @@
-self,x,y,char,color,blocks,move,attack,behaviour,integrity,energy,shield,power,data,death,size
-player,1,1,@,white,TRUE,move_entity,player_attack,passive_call,70,10,1,3,0,kill_entity,1.0
-MT-1,8,8,⦹,#75D054,TRUE,move_towards,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
-MT-2,8,9,⦹,#75D054,TRUE,move_towards,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
-PF-1,8,10,⦷,#3B528B,TRUE,pathfind,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
-MT-3,8,8,⦹,#75D054,TRUE,move_towards,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
-MT-4,8,9,⦹,#75D054,TRUE,move_towards,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
-MT-5,8,8,⦹,#75D054,TRUE,move_towards,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
-MT-6,8,9,⦹,#75D054,TRUE,move_towards,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
-PF-2,8,10,⦷,#3B528B,TRUE,pathfind,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
-PF-3,8,10,⦷,#3B528B,TRUE,pathfind,attack_target,taxis_attack,5,10,1,3,0,kill_entity,1.0
+name,x,y,char,color,blocks,move,attack,behaviour,integrity,energy,shield,power,data,max_integrity,max_energy,death,size,stall,short,class,target_name,description
+player,1,1,@,white,TRUE,move_player,attack_target,passive_call,100,100,1,3,0,100,100,kill_entity,1,FALSE,FALSE,actor,nothing,It's you.
+PropRove-1,2,2,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-2,3,3,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-3,4,4,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-4,5,5,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-5,6,6,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-6,7,7,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-7,8,8,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-8,9,9,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-9,10,10,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-10,11,11,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-11,12,12,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-12,13,13,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-13,14,14,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-14,15,15,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-15,16,16,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-16,17,17,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-17,18,18,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-18,19,19,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-19,20,20,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-20,21,21,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-21,22,22,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-22,23,23,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-23,24,24,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-24,25,25,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-25,26,26,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-26,27,27,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-27,28,28,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+PropRove-28,29,29,m,#75D054,TRUE,move_towards,attack_target,move_towards,5,10,1,3,1,5,10,kill_entity,1,FALSE,FALSE,actor,player,A simple rover. It's hostile.
+LunoRove-1,30,30,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-2,31,31,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-3,32,32,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-4,33,33,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-5,34,34,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-6,35,35,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-7,36,36,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-8,37,37,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-9,38,38,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-10,39,39,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-11,40,40,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-12,41,41,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-13,42,42,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-14,43,43,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-15,44,44,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-16,45,45,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-17,46,46,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-18,47,47,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-19,48,48,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-20,49,49,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-21,50,50,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-22,51,51,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-23,52,52,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-24,53,53,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-25,54,54,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-26,55,55,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-27,56,56,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-28,57,57,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-29,58,58,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+LunoRove-30,59,59,s,#3B528B,TRUE,move_towards,attack_target,move_towards,10,10,1,3,1,10,10,kill_entity,1,FALSE,FALSE,actor,player,A lunar rover. It's hostile and tough.
+Hull Repair-1,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.
+Hull Repair-2,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.
+Hull Repair-3,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.
+Hull Repair-4,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.
+Hull Repair-5,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.
+Hull Repair-6,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.
+Hull Repair-7,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.
+Hull Repair-8,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.
+Hull Repair-9,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.
+Hull Repair-10,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.
+Hull Repair-11,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.

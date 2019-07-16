@@ -1,0 +1,4 @@
+name,cost,generate,damage,repair,shield,stall,short,hack,teleport,action_targeting,range
+action_ex_1,1,0,20,0,0,0,0,0,0,burst_targeting,2.45
+action_ex_2,1,0,20,0,0,0,0,0,0,hit_targeting,5
+action_ex_3,1,0,20,0,0,0,0,0,0,pierce_targeting,4

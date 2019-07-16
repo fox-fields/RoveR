@@ -29,7 +29,7 @@ create_landscape <- function(map_buffer,
                       prob = 0.50,
                       bias = 1.5, 
                       smoothing = 3,
-                      size = 500,
+                      size = 50,
                       bedrock = FALSE) {
   if (bedrock == TRUE) {
     map_buffer<-rasterFromXYZ(expand.grid(x = 1 : size, y = 1 : size, z = 1))
@@ -121,7 +121,7 @@ river_system <- function (){
 create_planet <- function(){
 
   map_buffer <- create_landscape(1, prob = 0.58, bias = 1.5, smoothing = 3,
-                                 size = 200, bedrock = TRUE)
+                                 size = 50, bedrock = TRUE)
   rivers_buffer <- rasterFromXYZ(river_system())
   rivers_buffer@data@values[which(is.na(rivers_buffer@data@values))] <- 0
   map_buffer <- extend(map_buffer,rivers_buffer)
@@ -153,7 +153,7 @@ planet_tilesetter <- function(planet_map){
   map_buffer$char[which(map_buffer$char == 0)] <-"≈"
   map_buffer$char[which(map_buffer$char == 1)] <-"≈"
   map_buffer$char[which(map_buffer$char == 2)] <-"."
-  map_buffer$char[which(map_buffer$char == 3)] <-sample(c("〃","·","“","·","·","·"),
+  map_buffer$char[which(map_buffer$char == 3)] <-sample(c("〃",".","“",".",".","."),
                                                       length(map_buffer$char[which(map_buffer$char == 3)]),
                                                       replace = TRUE)
   map_buffer$char[which(map_buffer$char == 4)] <-sample(c("♠","♣","¥"),
@@ -182,8 +182,28 @@ planet_tilesetter <- function(planet_map){
                            char = map_buffer$char,
                            color = map_buffer$color,
                            size = map_buffer$size,
-                           blocks = map_buffer$blocks
+                           blocks = map_buffer$blocks,
+                           name = paste('Wall', c(1:length(map_buffer$x)), sep="-"),
+                           move = as.character('passive_call'),
+                           attack = as.character('passive_call'),
+                           behaviour = as.character('passive_call'),
+                           integrity = 20,
+                           energy = 0,
+                           shield = 0,
+                           power = 0,
+                           data = 0,
+                           max_integrity = 20,
+                           max_energy = 0,
+                           death = as.character('kill_entity'),
+                           stall = FALSE,
+                           short = FALSE,
+                           class = 'prop'
+                           
+                           
+                           
              )
+  
+  map_buffer <- map_buffer[-which(map_buffer$char == "."),]
   return(map_buffer)
 
 }

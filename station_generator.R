@@ -217,7 +217,30 @@ temp_level<-function(){
   wall_buffer2 <- unique(data.frame(x = hold_buffer$x, y = hold_buffer$y))
   
   wall_buffer <- setdiff(grid_buffer, wall_buffer2)
-  
+
+  wall_buffer$name <- paste('Wall', c(1:length(wall_buffer$x)), sep="-")
+  wall_buffer$char <- '▣'
+  wall_buffer$blocks <- TRUE
+  wall_buffer$color <- "#FDE725"
+  wall_buffer$move <- as.character('passive_call')
+  wall_buffer$attack <- as.character('passive_call')
+  wall_buffer$behaviour <- as.character('passive_call')
+  wall_buffer$integrity <- 20
+  wall_buffer$energy <- 0
+  wall_buffer$shield <- 0
+  wall_buffer$power <- 0
+  wall_buffer$data <- 0
+  wall_buffer$max_integrity <- 20
+  wall_buffer$max_energy <- 0
+  wall_buffer$death <- as.character('kill_entity')
+  wall_buffer$size <- 1.3
+  wall_buffer$stall <- FALSE
+  wall_buffer$short <- FALSE
+  wall_buffer$class <- 'prop'
+  wall_buffer$target_name <- NA
+  wall_buffer$description<- "It's a wall."
+
+
   par(pty = "s")
   
   plot(
