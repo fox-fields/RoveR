@@ -1,1 +1,1 @@
-[!screenshot](lunokhod_2.png)
+![screenshot](lunokhod_2.png)
