@@ -1,0 +1,2 @@
+name,x,y,char,color,blocks,move,attack,behaviour,integrity,energy,shield,power,data,max_integrity,max_energy,death,size,stall,short,class,target_name,description
+Hull Repair-12,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.

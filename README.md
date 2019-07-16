@@ -4,13 +4,19 @@
 
 RoveR is a roguelike about a planetary rover created using [R](https://en.wikipedia.org/wiki/R_(programming_language)) and the package [Shiny](https://shiny.rstudio.com/). 
 
-This is my entry in the [/r/roguelikedev](https://www.reddit.com/r/roguelikedev/) 2019 summer tutorial. I am not a developer, and this is entirely a hobby project. I’m not aware of any games made with R (perhaps for a good reason)! Let's see if it's possible. You can play my most recent deployment [here](https://foxfields.shinyapps.io/rover/). Press any key to start. Be patient, the demo requires up to 10 seconds to load when hosted. It's almost instant locally, I swear!
-
-Controls: Any key to start; WASD keys to move
-
-<i> Not working?</i> The RoveR app is being hosted for free. If the application is active for more than 25 hours, it will be unavaliable to users. 
+This is my entry in the [/r/roguelikedev](https://www.reddit.com/r/roguelikedev/) 2019 summer tutorial. I am not a developer, and this is entirely a hobby project. I’m not aware of any games made with R (perhaps for a good reason)! Let's see if it's possible.
 
 ### Mission Progress: 
+
+#### Week 5: "Lunokhod 3"
+
+It became necessary this week to step back and spend time restructing how entity data is stored and subset, which greatly improved performance locally. Because of the limitations of R, I'll likely need to optomize again towards the end of the tutorials. In my defence, I've really only started to understand anything about R and [why it's a slow language](http://adv-r.had.co.nz/Performance.html). It looks as if I may need to write some functions by connecting [C++ to R](http://adv-r.had.co.nz/Rcpp.html#rcpp). I don't think anyone has attempted to write any games in R, and while I'm not the person to do so correctly, I'm having a lot of fun learning about R (and programming generally) as I follow these tutorials. 
+
+In terms of progress, I've brought hover text (i.e. a cursor-based 'look'), line-of-sight targeting, items, an inventory, and actions (i.e. abilities for equipment) to RoveR. I've also made walls into entities, and they can now be destoryed with some effort. I've set things up nicely for the next two tutorials (I think) and I'm excited to polish some of these features for next week.
+
+Although performance is now improved locally, it is still awful with the online hosted demo application - I've decided to forego posting the link to the demo for this week.
+
+![Lunokhod 3](/preview/lunokhod_3.png)
 
 #### Week 4: "Prop-M"
 
