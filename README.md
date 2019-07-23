@@ -10,12 +10,11 @@ This is my entry in the [/r/roguelikedev](https://www.reddit.com/r/roguelikedev/
 
 #### Week 6: "Marsokhod"
 
-This week's mission objectives included saving and loading, the ability to transit between sections of the overworld, and stairs into underground structures. Saving and loading was easy to implement - saving and loading data is local as a .Rdata files. This could be readily expanded to multiple save slots in the future.
+I made the deliberate choice to avoid polishing and adding content as I worked through each tutorial over the last six weeks. The goal was to have a rough version of the main development path before tidying or adding additional features. In part, this was inspied by [Josh Ge's 2018 Roguelike Celebration talk](https://www.youtube.com/watch?v=jviNpRGuCIU). However, for the next two weeks, I'm going to be working on adding content, refining the core mechanic, and polishing. If time permits, I'll profile and improve performance.
 
-I divided the overworld into a 8x8 grid of 50x50 cell sections. Transiting between them requires 
+This week's progress brings saving and loading, the ability to transit between sections of the overworld , and stairs into underground structures. Saving and loading was easy enough to implement - data is stored locally as a .Rdata files. This could be expanded to multiple save slots in the future. The transitions between grids of the overworld is visible to the player right now, but will be hidden offscreen in the future.
 
-
-For the next two weeks, I'm going to be working on adding content, refining the core mechanic and polishing. If time permits, I'll profile and improve performance.
+![Lunokhod 3](/preview/Marsokhod.gif)
 
 #### Week 5: "Lunokhod 3"
 
