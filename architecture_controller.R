@@ -1,7 +1,7 @@
 #### Architecture controller ###################################################
 # RoveR
 # Architecture Functions ("architecture_controller.R")
-# July 2019 (RoveR version 0.5: "Lunokhod 3")
+# July 2019 (RoveR version 0.6: "Marsokhod")
 # FoxFields
 #
 # Functions that handle the game architecture.

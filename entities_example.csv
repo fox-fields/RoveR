@@ -69,3 +69,4 @@ Hull Repair-8,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0
 Hull Repair-9,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.
 Hull Repair-10,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.
 Hull Repair-11,5,5,^,#31688E,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,give_item,1,FALSE,FALSE,item,nothing,Repairs the hull integrity.
+Door,5,5,⟗,white,TRUE,passive_call,passive_call,repair_action,1,0,0,0,0,10,0,change_level,1,FALSE,FALSE,item,nothing,Entry into a new level. 

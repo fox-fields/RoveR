@@ -1,7 +1,7 @@
 #### Planet Generator ##########################################################
 # RoveR
 # Planet Generation Functions ("planet_generator.R") 
-# July 2019 (RoveR version 0.4: "Prop-M")
+# July 2019 (RoveR version 0.6: "Marsokhod")
 # FoxFields
 #
 # Funnctions that generate planets.
@@ -121,7 +121,7 @@ river_system <- function (){
 create_planet <- function(){
 
   map_buffer <- create_landscape(1, prob = 0.58, bias = 1.5, smoothing = 3,
-                                 size = 50, bedrock = TRUE)
+                                 size = 400, bedrock = TRUE)
   rivers_buffer <- rasterFromXYZ(river_system())
   rivers_buffer@data@values[which(is.na(rivers_buffer@data@values))] <- 0
   map_buffer <- extend(map_buffer,rivers_buffer)
@@ -197,19 +197,307 @@ planet_tilesetter <- function(planet_map){
                            death = as.character('kill_entity'),
                            stall = FALSE,
                            short = FALSE,
-                           class = 'prop'
+                           target_name = NA,
+                           class = 'prop',
+                           description = "",
+                           stringsAsFactors = FALSE
                            
                            
                            
              )
   
-  map_buffer <- map_buffer[-which(map_buffer$char == "."),]
-  return(map_buffer)
-
+  system_planets <- map_buffer
+  
+  return(system_planets)
 }
 
+#### Edge Doors #########################################################
+# TODO:Document
+
+edge_doors <- function(system_planets){
+  
+  system_planets$color[which(system_planets$x == 50 |
+                             system_planets$x == 100 |
+                             system_planets$x == 150 |
+                             system_planets$x == 200 |
+                             system_planets$x == 250 |
+                             system_planets$x == 300 |
+                             system_planets$x == 350 
+  )] <- "grey"
+  system_planets$char[which(system_planets$x == 50 |
+                            system_planets$x == 100 |
+                            system_planets$x == 150 |
+                            system_planets$x == 200 |
+                            system_planets$x == 250 |
+                            system_planets$x == 300 |
+                            system_planets$x == 350
+  )] <- "→"
+  system_planets$death[which(system_planets$x == 50 |
+                             system_planets$x == 100 |
+                             system_planets$x == 150 |
+                             system_planets$x == 200 |
+                             system_planets$x == 250 |
+                             system_planets$x == 300 |
+                             system_planets$x == 350
+  )] <- "map_right"
+  system_planets$blocks[which(system_planets$x == 50 |
+                              system_planets$x == 100 |
+                              system_planets$x == 150 |
+                              system_planets$x == 200 |
+                              system_planets$x == 250 |
+                              system_planets$x == 300 |
+                              system_planets$x == 350
+  )] <- TRUE
+  system_planets$size[which(system_planets$x == 50 |
+                              system_planets$x == 100 |
+                              system_planets$x == 150 |
+                              system_planets$x == 200 |
+                              system_planets$x == 250 |
+                              system_planets$x == 300 |
+                              system_planets$x == 350
+  )] <- 1
+  system_planets$integrity[which(system_planets$x == 50 |
+                                   system_planets$x == 100 |
+                                   system_planets$x == 150 |
+                                   system_planets$x == 200 |
+                                   system_planets$x == 250 |
+                                   system_planets$x == 300 |
+                                   system_planets$x == 350
+  )] <- 1
+  system_planets$class[which(system_planets$x == 50 |
+                                   system_planets$x == 100 |
+                                   system_planets$x == 150 |
+                                   system_planets$x == 200 |
+                                   system_planets$x == 250 |
+                                   system_planets$x == 300 |
+                                   system_planets$x == 350
+  )] <- 'door'
+  
 
 
+  system_planets$color[which(system_planets$y == 50 |
+                             system_planets$y == 100 |
+                             system_planets$y == 150 |
+                             system_planets$y == 200 |
+                             system_planets$y == 250 |
+                             system_planets$y == 300 |
+                             system_planets$y == 350 
+  )] <- "grey"
+  system_planets$char[which(system_planets$y == 50 |
+                            system_planets$y == 100 |
+                            system_planets$y == 150 |
+                            system_planets$y == 200 |
+                            system_planets$y == 250 |
+                            system_planets$y == 300 |
+                            system_planets$y == 350
+  )] <- "↑"
+  system_planets$death[which(system_planets$y == 50 |
+                               system_planets$y == 100 |
+                               system_planets$y == 150 |
+                               system_planets$y == 200 |
+                               system_planets$y == 250 |
+                               system_planets$y == 300 |
+                               system_planets$y == 350
+  )] <- "map_up"
+  system_planets$blocks[which(system_planets$y == 50 |
+                                system_planets$y == 100 |
+                                system_planets$y == 150 |
+                                system_planets$y == 200 |
+                                system_planets$y == 250 |
+                                system_planets$y == 300 |
+                                system_planets$y == 350
+  )] <- TRUE
+  system_planets$size[which(system_planets$y == 50 |
+                              system_planets$y == 100 |
+                              system_planets$y == 150 |
+                              system_planets$y == 200 |
+                              system_planets$y == 250 |
+                              system_planets$y == 300 |
+                              system_planets$y == 350
+  )] <- 1
+  system_planets$integrity[which(system_planets$y == 50 |
+                                   system_planets$y == 100 |
+                                   system_planets$y == 150 |
+                                   system_planets$y == 200 |
+                                   system_planets$y == 250 |
+                                   system_planets$y == 300 |
+                                   system_planets$y == 350
+  )] <- 1
+  system_planets$class[which(system_planets$y == 50 |
+                                   system_planets$y == 100 |
+                                   system_planets$y == 150 |
+                                   system_planets$y == 200 |
+                                   system_planets$y == 250 |
+                                   system_planets$y == 300 |
+                                   system_planets$y == 350
+  )] <- 'door'
+  
+  
+  
+  system_planets$color[which(system_planets$y == 51 |
+                               system_planets$y == 101 |
+                               system_planets$y == 151 |
+                               system_planets$y == 201 |
+                               system_planets$y == 251 |
+                               system_planets$y == 301 |
+                               system_planets$y == 351 
+  )] <- "grey"
+  system_planets$char[which(system_planets$y == 51 |
+                              system_planets$y == 101 |
+                              system_planets$y == 151 |
+                              system_planets$y == 201 |
+                              system_planets$y == 251 |
+                              system_planets$y == 301 |
+                              system_planets$y == 351
+  )] <- "↓"
+  system_planets$death[which(system_planets$y == 51 |
+                               system_planets$y == 101 |
+                               system_planets$y == 151 |
+                               system_planets$y == 201 |
+                               system_planets$y == 251 |
+                               system_planets$y == 301 |
+                               system_planets$y == 351
+  )] <- "map_down"
+  system_planets$blocks[which(system_planets$y == 51 |
+                                system_planets$y == 101 |
+                                system_planets$y == 151 |
+                                system_planets$y == 201 |
+                                system_planets$y == 251 |
+                                system_planets$y == 301 |
+                                system_planets$y == 351
+  )] <- TRUE
+  system_planets$size[which(system_planets$y == 51 |
+                              system_planets$y == 101 |
+                              system_planets$y == 151 |
+                              system_planets$y == 201 |
+                              system_planets$y == 251 |
+                              system_planets$y == 301 |
+                              system_planets$y == 351
+  )] <- 1
+  system_planets$integrity[which(system_planets$y == 51 |
+                                   system_planets$y == 101 |
+                                   system_planets$y == 151 |
+                                   system_planets$y == 201 |
+                                   system_planets$y == 251 |
+                                   system_planets$y == 301 |
+                                   system_planets$y == 351
+  )] <- 1
+  system_planets$class[which(system_planets$y == 51 |
+                                   system_planets$y == 101 |
+                                   system_planets$y == 151 |
+                                   system_planets$y == 201 |
+                                   system_planets$y == 251 |
+                                   system_planets$y == 301 |
+                                   system_planets$y == 351
+  )] <- 'door'
+  
+  
+  system_planets$color[which(system_planets$x == 51 |
+                               system_planets$x == 101 |
+                               system_planets$x == 151 |
+                               system_planets$x == 201 |
+                               system_planets$x == 251 |
+                               system_planets$x == 301 |
+                               system_planets$x == 351 
+  )] <- "grey"
+  system_planets$char[which(system_planets$x == 51 |
+                              system_planets$x == 101 |
+                              system_planets$x == 151 |
+                              system_planets$x == 201 |
+                              system_planets$x == 251 |
+                              system_planets$x == 301 |
+                              system_planets$x == 351
+  )] <- "←" 
+  system_planets$death[which(system_planets$x == 51 |
+                               system_planets$x == 101 |
+                               system_planets$x == 151 |
+                               system_planets$x == 201 |
+                               system_planets$x == 251 |
+                               system_planets$x == 301 |
+                               system_planets$x == 351
+  )] <- "map_left"
+  system_planets$blocks[which(system_planets$x == 51 |
+                                system_planets$x == 101 |
+                                system_planets$x == 151 |
+                                system_planets$x == 201 |
+                                system_planets$x == 251 |
+                                system_planets$x == 301 |
+                                system_planets$x == 351
+  )] <- TRUE
+  system_planets$size[which(system_planets$x == 51 |
+                              system_planets$x == 101 |
+                              system_planets$x == 151 |
+                              system_planets$x == 201 |
+                              system_planets$x == 251 |
+                              system_planets$x == 301 |
+                              system_planets$x == 351
+  )] <- 1
+  system_planets$integrity[which(system_planets$x == 51 |
+                                   system_planets$x == 101 |
+                                   system_planets$x == 151 |
+                                   system_planets$x == 201 |
+                                   system_planets$x == 251 |
+                                   system_planets$x == 301 |
+                                   system_planets$x == 351
+  )] <- 1
+  system_planets$class[which(system_planets$x == 51 |
+                                   system_planets$x == 101 |
+                                   system_planets$x == 151 |
+                                   system_planets$x == 201 |
+                                   system_planets$x == 251 |
+                                   system_planets$x == 301 |
+                                   system_planets$x == 351
+  )] <- 'door'
+  
+  
+  
+  system_planets$color[which(system_planets$x == 3 |
+                             system_planets$x == 399 
+  )] <- "grey"
+  system_planets$char[which(system_planets$x == 3 |
+                              system_planets$x == 399
+                            
+  )] <- "⊞"
+  system_planets$integrity[which(system_planets$x == 3 |
+                                   system_planets$x == 399
+                                 
+  )] <- 9999
+  system_planets$size[which(system_planets$x == 3 |
+                                   system_planets$x == 399
+                                 
+  )] <- 1.3
+  system_planets$blocks[which(system_planets$x == 3 |
+                                   system_planets$x == 399
+                                 
+  )] <- TRUE
+  
+  
+  
+  
+  
+  system_planets$color[which(system_planets$y == 3 |
+                               system_planets$y == 399
+  )] <- "grey"
+  system_planets$char[which(system_planets$y == 3 |
+                              system_planets$y== 399 
+                            
+  )] <- "⊞"
+  system_planets$integrity[which(system_planets$y == 3 |
+                                   system_planets$y == 399
+                                 
+  )] <- 9999
+  system_planets$size[which(system_planets$y == 3 |
+                              system_planets$y == 399
+                            
+  )] <- 1.3
+  system_planets$blocks[which(system_planets$y == 3 |
+                                system_planets$y == 399
+                              
+  )] <- TRUE
+  
+  system_planets <- system_planets[-which(system_planets$char == "."),]
+  return(system_planets)
+}
 
 
 

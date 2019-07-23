@@ -1,7 +1,7 @@
 #### Turn Controller #######################################################
 # RoveR
 # Turn Handling Functions ("turn_contoller.R")
-# July 2019 (RoveR version 0.5: "Lunokhod 3")
+# July 2019 (RoveR version 0.6: "Marsokhod")
 # FoxFields
 #
 # Functions that control the events of player and enemy turns. 
