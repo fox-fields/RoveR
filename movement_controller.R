@@ -1,7 +1,7 @@
 #### Movement Controller #######################################################
 # RoveR
 # Movement Functions ("movement_contoller.R")
-# July 2019 (RoveR version 0.5: "Lunokhod 3")
+# July 2019 (RoveR version 0.6: "Marsokhod")
 # FoxFields
 #
 # Functions that control movement of entities
@@ -36,6 +36,7 @@ move_player <- function(dx, dy, self, blocks, archit) {
       target<-target[1]
       attack <- get(as.character(entity$attack))
       attack(self, target, archit)
+      entity<-archit[['entities']][name == self]
       }
     else{
       entity$x <- entity$x + dx
@@ -46,7 +47,7 @@ move_player <- function(dx, dy, self, blocks, archit) {
     entities <-  archit[['entities']]
     entity <- entities[name == self]
     entity$x <- entity$x + dx
-    entity$y <- entity$y + dy
+    entity$y <- entity$y + dys
   }
   archit[['entities']][name == self] <- entity
   archit[['state']] <- 'entity_turn'

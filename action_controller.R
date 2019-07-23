@@ -1,7 +1,7 @@
 #### Action Controller #########################################################
 # RoveR
 # Action Functions ("action_contoller.R")
-# July 2019 (RoveR version 0.5: "Lunokhod 3")
+# July 2019 (RoveR version 0.6: "Marsokhod")
 # FoxFields 
 #
 # Functions that contol entity actions.
@@ -318,8 +318,9 @@ burst_targeting <- function(action_number, key, self, archit){
   range_b <- action$range
   targets <- entities[sqrt((entity$x - x)^2 + (entity$y - y)^2) < range_b &
                         blocks == TRUE &
-                        name != self]
-
+                        name != self &
+                        class != 'door']
+  if (!is.null(targets)){
   targets$char <- "◼"
   targets$color <- "#287C8E50"
   targets$blocks <- FALSE
@@ -335,7 +336,7 @@ burst_targeting <- function(action_number, key, self, archit){
       }
     archit[['state']] <- 'entity_turn'
   }
-
+  }
   if (key == 57){ # 192 (keydown = `)
     archit[['entities']] <- archit[['entities']][class != 'overlay']
     archit[['state']] <- 'player_movement'
@@ -365,7 +366,7 @@ pierce_targeting <- function(action_number, key, self, archit){
   if (is.null(hover_buffer)){hover_buffer <- player}
   targets <- select_path(hover_buffer,player)
   targets <- archit[['entities']][paste(x,y) %in% paste(targets$x,targets$y)]
-  targets <- targets[blocks == TRUE]
+  targets <- targets[blocks == TRUE & class != 'door']
   if (key == 13){ # 13 (keydown = enter)
     if (length(targets >= 1)){
       take_action(action_number, self, targets$name, archit)
@@ -403,7 +404,7 @@ hit_targeting <- function(action_number, key, self, archit){
 
   if (key == 13){ # 13 (keydown = enter)
     if (length(targets >= 1)){
-      targets <- targets[blocks == TRUE & name != 'player']
+      targets <- targets[blocks == TRUE & name != 'player' & class != 'door']
       targets$d <- sqrt((targets$x - player$x)^2 + (targets$y - player$y)^2)
       targets <- targets[targets$d == min(targets$d)]
       take_action(action_number, self, targets$name, archit)

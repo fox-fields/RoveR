@@ -1,7 +1,7 @@
 #### Combat Controller #########################################################
 # RoveR
 # Combat Functions ("combat_contoller.R")
-# July 2019 (RoveR version 0.5: "Lunokhod 3")
+# July 2019 (RoveR version 0.6: "Marsokhod")
 # FoxFields
 #
 # Functions that control combat between entities

@@ -1,14 +1,14 @@
 ##### RoveR Application ########################################################
 # RoveR 
 # Application ("app.R")
-# July 2019 (RoveR version 0.5: "Lunokhod 3")
+# July 2019 (RoveR version 0.6: "Marsokhod")
 # FoxFields
 #
 
 #### Source Files ##############################################################
 
 # Controllers
-source("action_controller.R")
+source("action_controller.R") # need to fix targetting on bursts
 source("architecture_controller.R")
 source("behaviour_controller.R")
 source("combat_controller.R")
@@ -18,6 +18,7 @@ source("turn_controller.R")
 
 #replace
 source("target_drafting.R")
+#TODO: Place inanother source file. Tidy.
 
 # Generators
 source("planet_generator.R")
@@ -55,30 +56,32 @@ ui = fillPage(
   plotlyOutput('plot', height = 750, width = 1400),
   span(htmlOutput('log'),style="color:white"),
   tags$style(type="text/css", ".recalculating {opacity: 1.0;}"),
-  tags$head(tags$style(HTML(html_notification())))
+  tags$head(tags$style(HTML(html_notification()))),
+  tags$audio(src = "slowmotion.wav", type = "audio/wav", 
+            autoplay=NA, controls = NA, style="display:none;")
 )
 
 #### Shiny server ############################################################## 
 server = function(input, output, session) {
-  #### Temporary loading screen
-  showNotification("RoveR - FoxFields - Press any key and wait.",
-    duration = 5, closeButton = F
-  )
-  
+
 #### Initialization ############################################################
   archit <- reactiveValues(entities = list(),
-                           actions = list(),
-                           inventory = list(),
+                            actions = list(),
+                          inventory = list(),
                              hidden = list(),
                                 log = list(),
-                              state = list()
+                              state = list(),
+                              world = list(),
+                            station = list()
                            )
-                           
+
 #### Temporary game loading ####################################################
   
-  ### V delete this. Sigh.
-  
-  level_temp <- temp_level()
+  ### v delete this. Sigh.
+
+  level_temp <- edge_doors(planet_tilesetter(create_planet()))
+  archit[['world']] <- level_temp
+  level_temp <- level_temp[which(level_temp$x <51 & level_temp$y <51),]
   acceptable_tiles <- expand.grid(x=min(level_temp$x):max(level_temp$x), 
                                   y=min(level_temp$y):max(level_temp$y))
   level_tiles <- data.frame(x = level_temp$x,
@@ -92,7 +95,7 @@ server = function(input, output, session) {
   entities_temp$y <- acceptable_tiles$y
   
   ### ^ delete this. Sigh.
-  
+
   archit[['state']] <- 'player_movement'
   archit[['log']] <- list(log_text5 = "...", 
                           log_text4 = "...",
@@ -100,29 +103,26 @@ server = function(input, output, session) {
   archit[["entities"]] <- as.data.table(rbind(entities_temp,
                                               level_temp))
    archit[["inventory"]] <- as.data.table(read.csv('items_example.csv', 
-                                                  header=TRUE,
-                                                  stringsAsFactors=FALSE))
+                                                    header=TRUE,
+                                                    stringsAsFactors=FALSE))
   archit[["action"]] <- as.data.table(read.csv('actions_example.csv', 
-                                                  header=TRUE,
-                                                  stringsAsFactors=FALSE))
+                                                header=TRUE,
+                                                stringsAsFactors=FALSE))
 
   ####  Plot screen ###############################################################
   output$plot = renderPlotly({
     plot_buffer <- plot_ly() %>%  config(displayModeBar = F) 
-    
     if (archit[['state']] == 'player_movement' |
         archit[['state']] == 'entity_turn' |
         archit[['state']] == 1 ){ # move state 1 down to player actions 
       plot_buffer <- plot_tiles(plot_buffer, archit)
       plot_buffer <- plot_grid(plot_buffer, archit)
     }
-    
     else if (archit[['state']] == 'player_menu' |
              archit[['state']] == 'drop_menu'){
       plot_buffer <- plot_inventory(plot_buffer, archit)
       plot_buffer <- menu_grid(plot_buffer, archit)
     }
-
     else if (archit[['state']] == 'player_action'|
              archit[['state']] == 2 |
              archit[['state']] == 3 ){
@@ -130,7 +130,6 @@ server = function(input, output, session) {
       plot_buffer <- plot_grid(plot_buffer, archit)
       plot_buffer <- plot_overlay(plot_buffer, archit)
     }
-
  })
 
 #### Temporary user interface #################################################

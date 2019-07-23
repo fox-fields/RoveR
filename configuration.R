@@ -37,3 +37,28 @@ html_notification <- function(){
     }
     "
 }
+
+
+save_game <- function(archit){
+  entities <- archit[['entities']]
+  actions <- archit[['actions']]
+  inventory <-archit[['inventory']]
+  hidden <-archit[['hidden']]
+  log <-archit[['log']]
+  state <-archit[['state']]
+  save(entities, actions, inventory, hidden, log, state,
+          file = 'saved_game.Rdata')
+}
+
+load_game <- function(archit){
+  load('saved_game.Rdata')
+
+  
+   archit[['entities']] <- entities
+   archit[['actions']] <- actions
+   archit[['inventory']] <- inventory
+   archit[['hidden']] <- hidden
+   archit[['log']] <- log 
+   archit[['state']] <- state 
+  
+}

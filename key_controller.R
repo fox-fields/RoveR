@@ -1,7 +1,7 @@
 #### Key Controller ############################################################
 # RoveR
 # Key Manager Functions ("key_controller.R")
-# July 2019 (RoveR version 0.5: "Lunokhod 3")
+# July 2019 (RoveR version 0.6: "Marsokhod")
 # FoxFields
 #
 # Functions that control keyboard input.
@@ -54,11 +54,17 @@ movement_keys <- function(key, archit){
     else if (key == 49 | key == 50 | key == 51){ #49, 50, 51 (keydown = 1, 2, 3)
       archit[['state']] <- 'player_action'
     }
-    else if (key == 56){ #187 (keydown = +)
+    else if (key == 56){ #56 (keydown = 8)
       archit[['state']] <- 'player_menu'
     }
-    else if (key == 55){ #189 (keydown = -)
+    else if (key == 55){ #55 (keydown = 7)
       archit[['state']] <- 'drop_menu'
+    }
+    else if (key == 187){ #187 (keydown = +)
+      save_game(archit)
+    }
+    else if (key == 189){ #189 (keydown = -)
+      load_game(archit)
     }
 }
 

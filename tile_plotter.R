@@ -1,7 +1,7 @@
 #### Tile Plotter ###########################################################
 # RoveR
 # Tile Manager Functions ("tile_plotter.R")
-# July 2019 (RoveR version 0.5: "Lunokhod 3")
+# July 2019 (RoveR version 0.6: "Marsokhod")
 # FoxFields
 #
 # Functions that control the plotting of tiles.
@@ -66,7 +66,7 @@ plot_grid <- function (plot_buffer, archit){
     dragmode=FALSE,
     xaxis = list(
       range = c(player$x - 5, player$x + 5),
-      dtick = 1,
+      dtick =1,
       tick0 = 0.5,
       zeroline = FALSE,
       showline = FALSE,
@@ -215,6 +215,26 @@ plot_tiles2 <- function(plot_buffer, archit) {
     textposition = "center",
     hovertemplate = NULL,
     textfont = list(color = tiles$color,
+                    size = tiles$size * 70)
+  )
+}
+
+
+
+plot_sys<- function(plot_buffer, archit) {
+  tiles <- archit[['planets']]
+
+  add_trace(
+    name = "Planets",
+    plot_buffer,
+    x = tiles$x,
+    y = tiles$y,
+    type = 'scatter',
+    mode = 'text',
+    text = tiles$char, 
+    textposition = "center",
+    hovertemplate = NULL,
+    textfont = list(color = "green",
                     size = tiles$size * 70)
   )
 }

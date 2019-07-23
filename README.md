@@ -8,6 +8,14 @@ This is my entry in the [/r/roguelikedev](https://www.reddit.com/r/roguelikedev/
 
 ### Mission Progress: 
 
+#### Week 6: "Marsokhod"
+
+I made the deliberate choice to avoid polishing and adding content as I worked through each tutorial over the last six weeks. The goal was to have a rough version of the main development path before tidying or adding additional features. In part, this was inspied by [Josh Ge's 2018 Roguelike Celebration talk](https://www.youtube.com/watch?v=jviNpRGuCIU). However, for the next two weeks, I'm going to be working on adding content, refining the core mechanic, and polishing. If time permits, I'll profile and improve performance.
+
+This week's progress brings saving and loading, the ability to transit between sections of the overworld , and stairs into underground structures. Saving and loading was easy enough to implement - data is stored locally as a .Rdata files. This could be expanded to multiple save slots in the future. The transitions between grids of the overworld is visible to the player right now, but will be hidden offscreen in the future.
+
+![Lunokhod 3](/preview/marsokhod.gif)
+
 #### Week 5: "Lunokhod 3"
 
 It became necessary this week to step back and spend time restructing how entity data is stored and subset, which greatly improved performance locally. Because of the limitations of R, I'll likely need to optomize again towards the end of the tutorials. In my defence, I've really only started to understand anything about R and [why it's a slow language](http://adv-r.had.co.nz/Performance.html). It looks as if I may need to write some functions by connecting [C++ to R](http://adv-r.had.co.nz/Rcpp.html#rcpp). I don't think anyone has attempted to write any games in R, and while I'm not the person to do so correctly, I'm having a lot of fun learning about R (and programming generally) as I follow these tutorials. 

@@ -1,7 +1,7 @@
 #### User Interfacer ############################################################
 # RoveR
 # User Interface Functions ("user_interfacer.R")
-# July 2019 (RoveR version 0.5: "Lunokhod 3")
+# July 2019 (RoveR version 0.6: "Marsokhod")
 # FoxFields
 #
 # Functions that display user interface
