@@ -14,7 +14,7 @@ I made the deliberate choice to avoid polishing and adding content as I worked t
 
 This week's progress brings saving and loading, the ability to transit between sections of the overworld , and stairs into underground structures. Saving and loading was easy enough to implement - data is stored locally as a .Rdata files. This could be expanded to multiple save slots in the future. The transitions between grids of the overworld is visible to the player right now, but will be hidden offscreen in the future.
 
-![Lunokhod 3](/preview/Marsokhod.gif)
+![Lunokhod 3](/preview/marsokhod.gif)
 
 #### Week 5: "Lunokhod 3"
 
