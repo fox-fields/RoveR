@@ -1,1 +1,1 @@
-[screenshot]
+![screenshot](Marsokhod.gif)
