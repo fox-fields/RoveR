@@ -10,6 +10,8 @@ This is my entry in the [/r/roguelikedev](https://www.reddit.com/r/roguelikedev/
 
 #### Week 7: "Sojourner"
 
+I was flat out with work projects and vacation this week. However, I found some time to add a menu, scanlines and some glow to each character. I've also added 90 modules (i.e. equipment) with various abilites for the Rover. If I can find the time, I'll try to overrhaul enemies and have a shareable version for next week. 
+
 ![Lunokhod 3](/preview/soujourner_preview.png)
 #### Week 6: "Marsokhod"
 
