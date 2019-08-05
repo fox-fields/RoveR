@@ -8,6 +8,9 @@ This is my entry in the [/r/roguelikedev](https://www.reddit.com/r/roguelikedev/
 
 ### Mission Progress: 
 
+#### Week 7: "Sojourner"
+
+![Lunokhod 3](/preview/soujourner_preview.png)
 #### Week 6: "Marsokhod"
 
 I made the deliberate choice to avoid polishing and adding content as I worked through each tutorial over the last six weeks. The goal was to have a rough version of the main development path before tidying or adding additional features. In part, this was inspied by [Josh Ge's 2018 Roguelike Celebration talk](https://www.youtube.com/watch?v=jviNpRGuCIU). However, for the next two weeks, I'm going to be working on adding content, refining the core mechanic, and polishing. If time permits, I'll profile and improve performance.
