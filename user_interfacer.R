@@ -20,7 +20,11 @@
 panel_stats <- function(archit){
   tiles <- archit[['entities']]
   player <- tiles[which(tiles$name == 'player'),]
-  paste("Player: ",
+  if (archit[['state']] == 'title_screen'){
+    paste("")
+  }
+  else{
+  paste(
       "[Integrity:", 
       player$integrity, 
       "/",
@@ -31,9 +35,9 @@ panel_stats <- function(archit){
       player$energy,
       "/",
       player$max_energy,
-      "]",
+      "] ",
       
-      "\t[Power:",
+      "----[Power:",
       player$power,
       "]",
       
@@ -46,6 +50,8 @@ panel_stats <- function(archit){
       "]",
       sep = " "
      )
+}
+  
 }
 
 #### [+] Log Text ##############################################################
@@ -70,15 +76,17 @@ log_text <- function(string, archit){
 # = returns; a string of log events to display.
 
 panel_log <- function(archit){
+  if (archit[['state']] == 'title_screen'){
+    paste("")
+  }
+  else{
  paste(
   archit[['log']]$log_text5,
   archit[['log']]$log_text4,
   archit[['log']]$log_text3,
-  #archit[['log']]$log_text2,
-  #archit[['log']]$log_text1, 
   sep="<br/>"
   )
-  
+  }
 }
 
 
@@ -104,17 +112,22 @@ panel_inventory <- function(archit){
 # = returns; summary statistics about the player (string)
 
 panel_key <- function(archit){
+  if (archit[['state']] == 'title_screen'){
+    paste("")
+  }
+  else{
  paste( "Controls:",
         "[WASD - Movement]",
         "[Mouse - Aim Targeting]",
-        "[1 - Burst Targeting]",
-        "[2 - Hit Targeting]",
-        "[3 - Pierce Targeting]",
+        "[1 - Module 1]",
+        "[2 - Module 2]",
+        "[3 - Module 3]",
         "[Enter - Attack with Targeting]",
         "[8 - Inventory]",
         "[9 - Exit Inventory/Targeting]",
         sep = " "
   )
+}
 }
 
 

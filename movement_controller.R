@@ -1,7 +1,7 @@
 #### Movement Controller #######################################################
 # RoveR
 # Movement Functions ("movement_contoller.R")
-# July 2019 (RoveR version 0.6: "Marsokhod")
+# July 2019 (RoveR version 0.7: "Sojourner")
 # FoxFields
 #
 # Functions that control movement of entities

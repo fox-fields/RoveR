@@ -150,8 +150,8 @@ planet_tilesetter <- function(planet_map){
   map_buffer <- map_buffer[which(map_buffer$layer >= 0),]
   
   map_buffer$char <- map_buffer$layer
-  map_buffer$char[which(map_buffer$char == 0)] <-"≈"
-  map_buffer$char[which(map_buffer$char == 1)] <-"≈"
+  map_buffer$char[which(map_buffer$char == 0)] <-"■"
+  map_buffer$char[which(map_buffer$char == 1)] <-"■"
   map_buffer$char[which(map_buffer$char == 2)] <-"."
   map_buffer$char[which(map_buffer$char == 3)] <-sample(c("〃",".","“",".",".","."),
                                                       length(map_buffer$char[which(map_buffer$char == 3)]),
@@ -165,14 +165,22 @@ planet_tilesetter <- function(planet_map){
   
   
    map_buffer$size <- map_buffer$layer
-   map_buffer$size[which(map_buffer$size == 0)] <- 1.5
-   map_buffer$size[which(map_buffer$size == 1)] <- 1.5
+   map_buffer$size[which(map_buffer$size == 0)] <- 2.1
+   map_buffer$size[which(map_buffer$size == 1)] <- 2.1
    map_buffer$size[which(map_buffer$size == 2)] <- 0.7
    map_buffer$size[which(map_buffer$size == 3)] <- 0.7
    map_buffer$size[which(map_buffer$size == 4)] <- 1.5
    map_buffer$size[which(map_buffer$size == 5)] <- 1.5
   
-   map_buffer$color <- scales::viridis_pal()(7)[map_buffer$layer + 2]
+   map_buffer$color <- c('#d79921',
+                          '#458588',
+                         '#83a598',
+                         '#689d6a',
+                         '#689d6a',
+                         '#8ec07c',
+                         '#d79921'
+
+                         )[map_buffer$layer+2]
 
    map_buffer$blocks <- TRUE
    map_buffer$blocks[which(map_buffer$layer < 4 & map_buffer$layer > 1)] <- FALSE

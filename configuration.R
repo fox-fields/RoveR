@@ -9,6 +9,7 @@ js_keys <-function(){
   $(document).keyup(function(e) { 
     keyReg [e.which] = true;
   });
+Plotly.newPlot('plot', data, layout);
   "
 }
 
@@ -34,7 +35,9 @@ html_notification <- function(){
       font-style: bold !important;
       top: calc(50% - 150px);;
       left: calc(50% - 400px);;
-    }
+  }
+
+
     "
 }
 
