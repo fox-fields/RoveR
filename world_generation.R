@@ -1,5 +1,3 @@
-source("planet_generator.R")
-
 generate_system <- function(){
   system_planets <- planet_tilesetter(create_planet())
   planet_buffer <- list()
@@ -26,15 +24,3 @@ generate_system <- function(){
 
 
 
-
-
-wut<-generate_system()
-wut <- wut[[1]]
-
-plot(wut$x,wut$y)
-
-wut <- expand.grid(x=1:20,y=1:20)
-
-wut <- split(wut$x,5)
-plot(wut$`1`)
-plot(wut)

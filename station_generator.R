@@ -221,7 +221,7 @@ temp_level<-function(){
   wall_buffer$name <- paste('Wall', c(1:length(wall_buffer$x)), sep="-")
   wall_buffer$char <- '▣'
   wall_buffer$blocks <- TRUE
-  wall_buffer$color <- "#FDE725"
+  wall_buffer$color <-  '#83a598'
   wall_buffer$move <- as.character('passive_call')
   wall_buffer$attack <- as.character('passive_call')
   wall_buffer$behaviour <- as.character('passive_call')

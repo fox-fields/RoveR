@@ -1,18 +1,18 @@
 ##### RoveR Application ########################################################
 # RoveR 
 # Application ("app.R")
-# July 2019 (RoveR version 0.6: "Marsokhod")
+# July 2019 (RoveR version 0.7: "Sojourner")
 # FoxFields
-#
+# 
 
 #### Source Files ##############################################################
 
 # Controllers
 source("action_controller.R") # need to fix targetting on bursts
-source("architecture_controller.R")
-source("behaviour_controller.R")
+source("architecture_controller.R") #
+source("behaviour_controller.R") #
 source("combat_controller.R")
-source("key_controller.R")
+source("key_controller.R") #
 source("movement_controller.R")
 source("turn_controller.R")
 
@@ -45,20 +45,50 @@ require(plotly)
 require(igraph)
 require(profvis)
 require(compiler)
+
 enableJIT(3) 
 
 #### Shiny UI ##################################################################
-ui = fillPage(
+ui = fluidPage(
+
   tags$script(js_keys()),
-  setBackgroundColor("#353535"),
-  span(textOutput('stat_panel'),style="color:#35B779"),
-  span(textOutput('key_panel'),style="color:#FDE725"),
-  plotlyOutput('plot', height = 750, width = 1400),
-  span(htmlOutput('log'),style="color:white"),
+  setBackgroundColor("#282828"),
+  h1( 
+    plotlyOutput('plot', height = 750, width = 1150),
+  class = 'crt'),
+  fluidRow(class='crt',
+  column(4,textOutput('stat_panel'), style="color:#fadb2f; font-size: 20px;"),
+  #column(3,textOutput('key_panel'), style="color:#fadb2f; font-size: 20px;"),
+  column(6,
+   fluidRow(
+   column(1),
+   column(10,htmlOutput('log'),style="color:#fadb2f; font-size: 20px;")))
+  ),
   tags$style(type="text/css", ".recalculating {opacity: 1.0;}"),
-  tags$head(tags$style(HTML(html_notification()))),
   tags$audio(src = "slowmotion.wav", type = "audio/wav", 
-            autoplay=NA, controls = NA, style="display:none;")
+            autoplay=NA, controls = NA, style="display:none;"),
+  tags$style("
+
+    .crt::before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      z-index: 2;
+      background-size: 100% 3px, 1px 100%;
+      pointer-events: none;
+    }
+.crt {
+    text-shadow: 1px 1px 5px #fadb2f, 0px 0px 55px #fadb2f, 0px 0px 15px #fadb2f;
+}
+    }
+
+"
+  )
 )
 
 #### Shiny server ############################################################## 
@@ -72,7 +102,9 @@ server = function(input, output, session) {
                                 log = list(),
                               state = list(),
                               world = list(),
-                            station = list()
+                            station = list(),
+                            text = list(),
+                            menu_status = list()
                            )
 
 #### Temporary game loading ####################################################
@@ -96,18 +128,23 @@ server = function(input, output, session) {
   
   ### ^ delete this. Sigh.
 
-  archit[['state']] <- 'player_movement'
+  archit[['state']] <- 'title_screen'
+  archit[['menu_status']] <- 'title'
   archit[['log']] <- list(log_text5 = "...", 
                           log_text4 = "...",
-                          log_text3 = "...")
-  archit[["entities"]] <- as.data.table(rbind(entities_temp,
-                                              level_temp))
+                          log_text3 = "...",
+                          log_text2 = "...",
+                          log_text1 = "...")
+  archit[["entities"]] <- as.data.table(rbind(level_temp,entities_temp))
    archit[["inventory"]] <- as.data.table(read.csv('items_example.csv', 
                                                     header=TRUE,
                                                     stringsAsFactors=FALSE))
   archit[["action"]] <- as.data.table(read.csv('actions_example.csv', 
                                                 header=TRUE,
                                                 stringsAsFactors=FALSE))
+  archit[["text"]] <- as.data.table(read.csv('menu_text.csv', 
+                                               header=TRUE,
+                                               stringsAsFactors=FALSE))
 
   ####  Plot screen ###############################################################
   output$plot = renderPlotly({
@@ -129,6 +166,14 @@ server = function(input, output, session) {
       plot_buffer <- plot_tiles2(plot_buffer, archit)
       plot_buffer <- plot_grid(plot_buffer, archit)
       plot_buffer <- plot_overlay(plot_buffer, archit)
+    }
+    else if (archit[['state']] == 'title_screen'){
+      plot_buffer <- plot_title(plot_buffer,archit)
+      plot_buffer <- menu_grid(plot_buffer, archit)
+    }
+    else if (archit[['state']] == 'character_select'){
+      plot_buffer <- plot_character(plot_buffer,archit)
+      plot_buffer <- menu_grid(plot_buffer, archit)
     }
  })
 
