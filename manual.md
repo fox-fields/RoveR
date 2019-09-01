@@ -24,7 +24,7 @@ Specifications contribute to the success or failure of exploring rovers. Rovers 
 
 A rover may use any module they choose, if they can afford its e**nergy cost**. A rover can only use one module per turn. Installing or removing modules requires one turn. Modules have a fixed **durability** that declines with each use. When a module has lost all durability, it disintegrates. 
 
-## **Module Abilities**
+## Module Abilities
 
 Modules have one or more abilities. When activated, a module uses each of its abilities. Module abilities may apply to the player's rover or may need a target entity. 
 
@@ -46,7 +46,7 @@ Modules have one or more abilities. When activated, a module uses each of its ab
 
 **Teleport** exchanges the location of a rover and a target entity on the map. Stalled entities can teleport. 
 
-## **Module Targeting **
+## Module Targeting
 
 Modules may apply solely to an acting rover or may apply to one or more target entities. The **range** of a module is the maximum distance over which a module can target an entity.  Each module belongs to a targeting class which determines the affected entities. 
 
