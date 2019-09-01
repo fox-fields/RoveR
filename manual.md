@@ -1,10 +1,10 @@
-# Game Play
+# 1. Game Play
 
 RoveR is consecutive turns taken by the player's rover and then all other entities. Each turn the player may activates a single module of the rover or wait. Activating modules or waiting consumes energy. When the player's rover has lost all energy or integrity it destructs, and the player loses the game. Destruction is permanent. 
 
 The aim of RoveR is to explore planets, survive hostile encounters and gather data.
 
-# Specifications
+# 2. Specifications
 
 Specifications contribute to the success or failure of exploring rovers. Rovers can increase their maximum specifications by acquiring new chassis. Rovers increase or decrease specification values by using modules. 
 
@@ -20,11 +20,11 @@ Specifications contribute to the success or failure of exploring rovers. Rovers 
 
 **Data** determine a rover's ability to access facilities and use technologies. Using data corrupts it. Analyzing or destroying entities provides a rover with new data. 
 
-# Modules
+# 3. Modules
 
 A rover may use any module they choose, if they can afford its e**nergy cost**. A rover can only use one module per turn. Installing or removing modules requires one turn. Modules have a fixed **durability** that declines with each use. When a module has lost all durability, it disintegrates. 
 
-## Module Abilities
+## 3.1 Module Abilities
 
 Modules have one or more abilities. When activated, a module uses each of its abilities. Module abilities may apply to the player's rover or may need a target entity. 
 
@@ -46,7 +46,7 @@ Modules have one or more abilities. When activated, a module uses each of its ab
 
 **Teleport** exchanges the location of a rover and a target entity on the map. Stalled entities can teleport. 
 
-## Module Targeting
+## 3.2 Module Targeting
 
 Modules may apply solely to an acting rover or may apply to one or more target entities. The **range** of a module is the maximum distance over which a module can target an entity.  Each module belongs to a targeting class which determines the affected entities. 
 
@@ -62,7 +62,7 @@ Modules may apply solely to an acting rover or may apply to one or more target e
 
 **Piercing Modules** target any entity within range along a path from a rover. A rover determines the cardinal direction to direct a ranged module. A ranged module misses if a rover's sensitivity plus 1d6 is less than the sensitivity of a given target.
 
-# Controls
+# 4. Controls
 
              [W]   Move/Aim North
 
@@ -82,6 +82,6 @@ Modules may apply solely to an acting rover or may apply to one or more target e
 
               [L]   Toggle Hostile Targeting
 
-# Credits
+# 5. Credits
 
 RoveR is by Foxfields. I welcome collaborators. Please get in touch if you want to make substantive contributions to this work.
